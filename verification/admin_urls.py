@@ -1,0 +1,43 @@
+from django.urls import path
+
+from verification.admin_views import (
+    admin_review_ngos_view,
+    admin_review_campaigns_view,
+    admin_list_ngos_view,
+    admin_ngo_documents_view,
+    admin_ngo_verification_view,
+    admin_ngo_score_view,
+    admin_ngo_validate_view,
+    admin_ngo_delete_view,
+    admin_list_campaigns_view,
+    admin_campaign_review_view,
+    admin_campaign_end_view,
+    admin_score_criteria_view,
+    admin_list_bundles_view,
+    admin_create_bundle_view,
+    admin_bundle_update_view,
+    admin_bundle_add_ngo_view,
+    admin_bundle_remove_ngo_view,
+    admin_bundle_end_view,
+)
+
+urlpatterns = [
+    path('review/ngos/', admin_review_ngos_view, name='admin-review-ngos'),
+    path('review/campaigns/', admin_review_campaigns_view, name='admin-review-campaigns'),
+    path('ngos/', admin_list_ngos_view, name='admin-list-ngos'),
+    path('ngos/<uuid:pk>/documents/', admin_ngo_documents_view, name='admin-ngo-documents'),
+    path('ngos/<uuid:pk>/verification/', admin_ngo_verification_view, name='admin-ngo-verification'),
+    path('ngos/<uuid:pk>/score/', admin_ngo_score_view, name='admin-ngo-score'),
+    path('ngos/<uuid:pk>/validate/', admin_ngo_validate_view, name='admin-ngo-validate'),
+    path('ngos/<uuid:pk>/', admin_ngo_delete_view, name='admin-ngo-delete'),
+    path('campaigns/', admin_list_campaigns_view, name='admin-list-campaigns'),
+    path('campaigns/<uuid:pk>/review/', admin_campaign_review_view, name='admin-campaign-review'),
+    path('campaigns/<uuid:pk>/end/', admin_campaign_end_view, name='admin-campaign-end'),
+    path('score-criteria/', admin_score_criteria_view, name='admin-score-criteria'),
+    path('bundles/', admin_list_bundles_view, name='admin-list-bundles'),
+    path('bundles/create/', admin_create_bundle_view, name='admin-create-bundle'),
+    path('bundles/<uuid:pk>/', admin_bundle_update_view, name='admin-bundle-update'),
+    path('bundles/<uuid:pk>/ngos/', admin_bundle_add_ngo_view, name='admin-bundle-add-ngo'),
+    path('bundles/<uuid:pk>/ngos/<uuid:ngo_pk>/', admin_bundle_remove_ngo_view, name='admin-bundle-remove-ngo'),
+    path('bundles/<uuid:pk>/end/', admin_bundle_end_view, name='admin-bundle-end'),
+]
